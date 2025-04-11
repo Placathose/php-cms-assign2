@@ -66,6 +66,8 @@ label {
 }
 
 input[type="text"],
+input[type="password"],
+input[type="email"],
 input[type="datetime-local"],
 textarea,
 select {
@@ -170,6 +172,22 @@ button[type="submit"]:hover { background: #43a047; transform: scale(1.05); }
   color: #ffeb3b;
 }
 
+.signup, 
+.login {
+  margin-top: 30px;
+}
+
+input[type="submit"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #4021bd;
+  color: #ffffff;
+
+}
+
 /* ====== Tables ====== */
 .table {
   width: 100%;
@@ -256,3 +274,4 @@ button[type="submit"]:hover { background: #43a047; transform: scale(1.05); }
     margin: 8px 0;
   }
 }
+

@@ -1,52 +1,41 @@
-<?php
-
-include('includes/config.php');
-include('includes/database.php');
-include('includes/functions.php');
-include('includes/header.php');
-
-if(isset($_POST['email']))
-{
-  // check if email and password match
-  $query = 'SELECT * FROM Users
-    WHERE email = "'.$_POST['email'].'"
-    AND password = "'.md5($_POST['password']).'"
-    AND active = "yes"
-    LIMIT 1';
-
-  $result = mysqli_query($connect, $query);
-
-  // Check if num of rows > 0
-  if(mysqli_num_rows($result))
-  {
-    $record = mysqli_fetch_assoc($result);
-    $_SESSION['Id'] = $record['Id'];
-    $_SESSION['email'] = $record['email'];
-
-    // Redirect to dashboard
-    header('Location: dashboard.php');
-    die();
-  }
-
-}
+<?php 
+include('includes/database.php'); 
 ?>
 
-<div style="max-width: 400px; margin:auto">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
 
-  <form method="post">
+<h1>Welcome to National Museum</h1>
 
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email">
+<a href="signin.php">Login</a>
+<a href="signup.php">Sign Up</a>
 
-    <br>
+<h2>Upcoming Events</h2>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-
-    <br>
-
-    <input type="submit" value="Login">
-
-  </form>
-  
+<div class="tours-list">
+    <?php
+    $query = 'SELECT Tours.*, Employees.FirstName, Employees.LastName 
+              FROM Tours 
+              LEFT JOIN Employees ON Tours.tourguide = Employees.Id 
+              ORDER BY tourDate DESC';
+    $result = mysqli_query($connect, $query);
+    
+    while($tour = mysqli_fetch_assoc($result)) {
+        echo '
+        <div class="tour-card">
+            <h3>'.htmlspecialchars($tour['title']).'</h3>
+            <p>Date: '.date('F j, Y g:i a', strtotime($tour['tourDate'])).'</p>
+            <p>Audience: '.htmlspecialchars($tour['audience']).'</p>
+            <p>Guide: '.htmlspecialchars($tour['FirstName']).' '.htmlspecialchars($tour['LastName']).'</p>
+        </div>';
+    }
+    ?>
 </div>
+

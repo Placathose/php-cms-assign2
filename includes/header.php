@@ -7,15 +7,17 @@
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+  
   <h1>Museum Tour</h1>
   
   <div>
     <a href="dashboard.php">Dashboard</a>
     <a href="logout.php">Logout</a>
   </div>
-
+  
   <hr/>
-
+  
   <?php get_message(); ?>
-
+  
   <div>
+

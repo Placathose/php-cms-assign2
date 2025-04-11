@@ -81,9 +81,31 @@ include('includes/header.php');
 
   <div class="dashboard-links">
     <a class="dashboard-link" href="tours.php">Manage Tours</a>
-    <a class="dashboard-link" href="users.php">Manage Users</a>
+    <a class="dashboard-link" href="users.php">Manage Employees</a>
     <a class="dashboard-link" href="events.php">Check the Events</a>
   </div>
+</div>
+
+<h2>Upcoming Tours</h2>
+
+<div class="tours-list">
+    <?php
+    $query = 'SELECT Tours.*, Employees.FirstName, Employees.LastName 
+              FROM Tours 
+              LEFT JOIN Employees ON Tours.tourguide = Employees.Id 
+              ORDER BY tourDate DESC';
+    $result = mysqli_query($connect, $query);
+    
+    while($tour = mysqli_fetch_assoc($result)) {
+        echo '
+        <div class="tour-card">
+            <h3>'.htmlspecialchars($tour['title']).'</h3>
+            <p>Date: '.date('F j, Y g:i a', strtotime($tour['tourDate'])).'</p>
+            <p>Audience: '.htmlspecialchars($tour['audience']).'</p>
+            <p>Guide: '.htmlspecialchars($tour['FirstName']).' '.htmlspecialchars($tour['LastName']).'</p>
+        </div>';
+    }
+    ?>
 </div>
 
 <?php include('includes/footer.php'); ?>
