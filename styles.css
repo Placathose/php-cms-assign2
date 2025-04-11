@@ -1,59 +1,88 @@
+/* ====== Global Reset & Typography ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.event-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 5px;
-}
-
-.tour-card {
-  border: 1px solid #b7b5b5;
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 5px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 15px;
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-/* Add Event Page Specific Styles */
-.container {
-  max-width: 800px;
-  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #e0f2f1);
+  color: #333;
   padding: 20px;
+  animation: fadeIn 1.2s ease;
 }
 
+/* ====== Animations ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ====== Layout ====== */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  animation: bounceIn 0.8s ease;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #00796b;
+  margin-bottom: 25px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #ddd;
+  margin: 20px 0;
+}
+
+/* ====== Forms ====== */
 form {
-  background: #f9f9f9;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 label {
-  display: block;
-  margin: 15px 0 5px;
-  font-weight: 600;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
 input[type="text"],
 input[type="datetime-local"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+textarea,
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #26a69a;
+  box-shadow: 0 0 6px rgba(38, 166, 154, 0.3);
+  outline: none;
 }
 
 textarea {
@@ -61,57 +90,169 @@ textarea {
   resize: vertical;
 }
 
-button[type="submit"] {
-  background: #28a745;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.cancel-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #6c757d;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* Delete button style */
+/* ====== Buttons ====== */
+button,
+.btn,
+.cancel-btn,
+.edit-btn,
 .delete-btn {
-  display: inline-block;
-  padding: 6px 12px;
-  background: #dc3545;
-  color: white;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
   text-decoration: none;
-  border-radius: 4px;
-  margin-left: 5px;
+  display: inline-block;
 }
 
-.delete-btn:hover {
-  background: #c82333;
+.btn { background: #00acc1; color: white; }
+.btn:hover { background: #00838f; transform: scale(1.05); }
+
+button[type="submit"] { background: #4caf50; color: white; }
+button[type="submit"]:hover { background: #43a047; transform: scale(1.05); }
+
+.cancel-btn { background: #607d8b; color: white; }
+.cancel-btn:hover { background: #546e7a; transform: scale(1.05); }
+
+.edit-btn { background: #ffca28; color: #212121; }
+.edit-btn:hover { background: #f4b400; transform: scale(1.05); }
+
+.delete-btn { background: #e53935; color: white; }
+.delete-btn:hover { background: #c62828; transform: scale(1.05); }
+
+/* ====== Cards ====== */
+.event-card,
+.tour-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideUp 0.6s ease;
+}
+
+.event-card:hover,
+.tour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .event-actions {
-  margin-top: 10px;
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-/* edit button style */
-.edit-btn {
-  display: inline-block;
-  padding: 6px 12px;
-  background: #efba3f;
-  color: rgb(22, 16, 16);
+/* ====== Navbar (Optional) ====== */
+.navbar {
+  background: #00695c;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.navbar a {
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 12px;
   text-decoration: none;
-  border-radius: 4px;
-  margin-left: 5px;
+  transition: color 0.3s ease;
 }
 
-.edit-btn:hover {
-  background: #db8223;
+.navbar a:hover {
+  color: #ffeb3b;
+}
+
+/* ====== Tables ====== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0;
+  padding: 14px;
+  text-align: left;
+}
+
+.table th {
+  background: #e0f2f1;
+  font-weight: bold;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* ====== Modal (Optional Utility) ====== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* ====== Loader (Fancy Optional) ====== */
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #00acc1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+
+  .event-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button, .btn, .cancel-btn, .edit-btn, .delete-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar a {
+    margin: 8px 0;
+  }
 }
