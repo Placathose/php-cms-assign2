@@ -11,8 +11,8 @@
   <h1>Museum Tour</h1>
   
   <div>
-    <a href="dashboard.php">Dashboard</a>
-    <a href="logout.php">Logout</a>
+    <a class="btn-nav" href="dashboard.php">Dashboard</a>
+    <a class="btn-nav" href="logout.php">Logout</a>
   </div>
   
   <hr/>

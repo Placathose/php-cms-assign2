@@ -109,6 +109,21 @@ button,
   display: inline-block;
 }
 
+.btn-nav {
+  background-color: #4021bd;
+  color: white;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-nav:hover { background: #4418f2; transform: scale(1.05); }
+
 .btn { background: #00acc1; color: white; }
 .btn:hover { background: #00838f; transform: scale(1.05); }
 

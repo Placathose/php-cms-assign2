@@ -81,7 +81,7 @@ include('includes/header.php');
 
   <div class="dashboard-links">
     <a class="dashboard-link" href="tours.php">Manage Tours</a>
-    <a class="dashboard-link" href="users.php">Manage Employees</a>
+    <a class="dashboard-link" href="employees.php">Manage Employees</a>
     <a class="dashboard-link" href="events.php">Check the Events</a>
   </div>
 </div>
